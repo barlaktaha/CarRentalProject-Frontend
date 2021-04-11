@@ -1,31 +1,64 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesi giriniz."
+  />
 </div>
-<table *ngIf="dataLoaded==true" class = "table table-bordered" >
-    <thead>
-        <tr>
-          <th scope="col">Marka</th>
-          <th scope="col">Model</th>
-          <th scope="col">Kategori</th>
-          <th scope="col">Vites</th>
-          <th scope="col">Renk</th>
-          <th scope="col">Segment</th>
-          <th scope="col">Yakıt</th>
-          <th scope="col">Koşul</th>
-          <th scope="col">Günlük Kiralama Ücreti</th>
-          <th scope="col">Model</th>
-        </tr>
-      </thead>
-    <tr *ngFor = "let cardetail of cardetails" >
-        <td>{{cardetail.brandName}}</td>
-        <td>{{cardetail.modelName}}</td>
-        <td>{{cardetail.categoryName}}</td>
-        <td>{{cardetail.gearName}}</td>
-        <td>{{cardetail.colorName}}</td>
-        <td>{{cardetail.segmentName}}</td>
-        <td>{{cardetail.fuelName}}</td>
-        <td>{{cardetail.conditionName}}</td>
-        <td>{{cardetail.dailyPrice}}</td>
-        <td>{{cardetail.modelYear}}</td>
-    </tr>
-</table>
+
+<div *ngIf="filterText" class="alert alert-warning">
+  {{ filterText }} Aradınız.
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div
+    *ngFor="let cardetail of cardetails | filterPipe: filterText"
+    class="container"
+    class="card text-dark bg-light"
+    style="width: 18rem"
+  >
+    <img
+      src="{{ imageBasePath }}{{ cardetail.imagePath }}"
+      class="card-img-top"
+      alt="Resim Yüklenemedi"
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        <td>
+          <b>{{ cardetail.brandName }} {{ cardetail.modelName }}</b>
+        </td>
+      </h5>
+      <p class="card-text">
+        <td><b>Koşul: </b>{{ cardetail.conditionName }}</td>
+        <br />
+        <td><b>Günlük Kiralama Ücreti: </b>{{ cardetail.dailyPrice }} TL</td>
+        <br />
+        <td>
+          <b>Günlük Kiralama Ücreti(KDV DAHİL): </b
+          >{{ cardetail.dailyPrice | vatAdded: 18 }} TL
+        </td>
+      </p>
+      <div class="btn-group-vertical">
+        <button
+          class="col-md-4 mx-auto"
+          (click) = "setCurrentDetail(cardetail)"
+          routerLink="/cars/cardetail/{{ cardetail.carId }}"
+          type="button"
+          class="btn btn-warning active"
+        >
+          <h6>Detaylar</h6>
+        </button> <br>
+        <button
+          (click)="addToCart(cardetail)"
+          type="button"
+          class="btn btn-primary active"
+        >
+          KİRALA
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

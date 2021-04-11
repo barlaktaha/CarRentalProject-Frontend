@@ -1,5 +1,23 @@
-<ul class="list-group">
-    <li class="list-group-item list-group-item-danger">Toyota</li>
-    <li class="list-group-item list-group-item-danger">Fiat</li>
-    <li class="list-group-item list-group-item-danger">Renault</li>
-  </ul>
+<div>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Marka Ara"
+  />
+</div>
+<select class="form-select" multiple aria-label="multiple select example">
+  <option selected>Filtrele(Marka)</option>
+  <option
+    (click)="setCurrentBrand(brand)"
+    routerLink="/carDetails/brand/{{ brand.brandId }}"
+    type="button"
+    *ngFor="let brand of brands | brandPipe: filterText"
+    [class]="getCurrentBrandClass(brand)"
+  >
+    {{ brand.brandName }}
+  </option>
+</select>
+<br />
+<br />

@@ -1,6 +1,29 @@
-<ul class="list-group">
-    <li class="list-group-item list-group-item-success">Beyaz</li>
-    <li class="list-group-item list-group-item-success">Gri</li>
-    <li class="list-group-item list-group-item-success">Siyah</li>
-    <li class="list-group-item list-group-item-success">Metalik-Gri</li>
-  </ul>
+<div>
+  <input 
+  type="text"
+  [(ngModel)]="filterText"
+  class="form-control"
+  id="filterText"
+  placeholder="Renk Ara">
+</div>
+<select class="form-select" multiple aria-label="multiple select example">
+  <option selected>Filtrele(Renk)</option>
+  <option
+  (click)="setCurrentColor(color)"
+  routerLink="/carDetails/{{ color.colorName }}"
+  type="button"
+  *ngFor="let color of colors | colorPipe:filterText"
+  [class]="getCurrentColorClass(color)"
+  >{{ color.colorName }}
+</option>
+</select>
+<br>
+<button
+routerLink="/cars/getcardetails"
+(click)="clearFilter()"
+type="button"
+aria-current="true"
+class="btn btn-info"
+>
+Filtreleri Temizle
+</button>

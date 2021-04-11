@@ -1,0 +1,55 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div
+    class="container"
+    class="card text-dark bg-light"
+    style="width: 36rem"
+  >
+    <img
+      src="{{ imageBasePath }}{{ cardetails.imagePath }}"
+      class="card-img-top"
+      alt="Resim Yüklenemedi"
+    />
+    <div class="card-body">
+      <h5 class="card-title">
+        <td>
+          <b>{{ cardetails.brandName }} {{ cardetails.modelName }}</b>
+        </td>
+      </h5>
+      <p class="card-text">
+        <td height="2">
+          <hr />
+          <b>Kasa Tipi: </b> {{ cardetails.categoryName }}
+        </td>
+        <br />
+        <td height="2"><b>Vites Tipi: </b>{{ cardetails.gearName }}</td>
+        <br />
+        <td><b>Renk: </b>{{ cardetails.colorName }}</td>
+        <br />
+        <td><b>Segment: </b>{{ cardetails.segmentName }}</td>
+        <br />
+        <td><b>Yakıt Tipi: </b>{{ cardetails.fuelName }}</td>
+        <br />
+        <td><b>Koşul: </b>{{ cardetails.conditionName }}</td>
+        <br />
+        <td><b>Model Yılı: </b>{{ cardetails.modelYear }}</td>
+        <br />
+
+        <td><b>Günlük Kiralama Ücreti: </b>{{ cardetails.dailyPrice }} TL</td>
+        <br />
+        <td>
+          <b>Günlük Kiralama Ücreti(KDV DAHİL): </b
+          >{{ cardetails.dailyPrice | vatAdded: 18 }} TL
+        </td>
+      </p>
+      <div>
+        <button
+          (click)="addToCart(cardetails)"
+          type="button"
+          class="btn btn-primary active"
+        >
+          KİRALA
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

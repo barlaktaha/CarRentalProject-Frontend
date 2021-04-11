@@ -1,0 +1,119 @@
+<li class="nav-item dropdown">
+  
+  <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Araba Ekle</h5></div>
+        <div class="card-body">
+          <form [formGroup]="carAddForm">
+            <label for="brandId">Marka Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="brandId"
+                formControlName="brandId"
+                class="form-control"
+                placeholder="Marka"
+              />
+            </div>
+            <label for="modelId">Model Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="modelId"
+                formControlName="modelId"
+                class="form-control"
+                placeholder="Model"
+              />
+            </div>
+            <label for="colorId">Renk Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="colorId"
+                formControlName="colorId"
+                class="form-control"
+                placeholder="Renk"
+              />
+            </div>
+            <label for="categoryId">Kasa Tipi Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="categoryId"
+                formControlName="categoryId"
+                class="form-control"
+                placeholder="Kasa Tipi"
+              />
+            </div>
+            <label for="fuelId">Yakıt Türü Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="fuelId"
+                formControlName="fuelId"
+                class="form-control"
+                placeholder="Yakıt Türü"
+              />
+            </div>
+            <label for="gearId">Vites Türü Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="gearId"
+                formControlName="gearId"
+                class="form-control"
+                placeholder="Vites Türü"
+              />
+            </div>
+            <label for="conditionId">Koşul Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="conditionId"
+                formControlName="conditionId"
+                class="form-control"
+                placeholder="Koşul"
+              />
+            </div>
+            <label for="segmentId">Segment Seçiniz;</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="segmentId"
+                formControlName="segmentId"
+                class="form-control"
+                placeholder="Segment"
+              />
+            </div>
+            <label for="dailyPrice">Günlük Kiralama Ücretini Yazınız:</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="dailyPrice"
+                formControlName="dailyPrice"
+                class="form-control"
+                placeholder="Günlük Kiralama Ücreti"
+              />
+            </div>
+            <label for="modelYear">Model Yılını Yazınız:</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="modelYear"
+                formControlName="modelYear"
+                class="form-control"
+                placeholder="Arabanın Model Yılı"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="addCar()">
+            Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
